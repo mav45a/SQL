@@ -1,0 +1,26 @@
+CREATE TABLE makeup_store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, rating INTEGER);
+INSERT INTO makeup_store VALUES (1, "eyelashes", 25, 15.50, 4);
+INSERT INTO makeup_store VALUES (2, "concealer", 10, 20, 8);
+INSERT INTO makeup_store VALUES (3, "foundation", 12, 15.25, 9);
+INSERT INTO makeup_store VALUES (4, "eyeshadow", 8, 15.33, 10);
+INSERT INTO makeup_store VALUES (5, "lip gloss", 5, 10.40, 5);
+INSERT INTO makeup_store VALUES (6, "bronzer", 12, 13.60, 9);
+INSERT INTO makeup_store VALUES (7, "lotion", 10, 12, 7);
+INSERT INTO makeup_store VALUES (8, "makeup remover", 12, 11.75, 10);
+INSERT INTO makeup_store VALUES (9, "lipstick", 10, 7.99, 3);
+INSERT INTO makeup_store VALUES (10, "lip balm", 23, 8.99,3);
+INSERT INTO makeup_store VALUES (11, "eyeliner", 8, 15.25, 10);
+INSERT INTO makeup_store VALUES (12, "highlighter", 10, 14.50, 8);
+INSERT INTO makeup_store VALUES (13, "perfume", 30, 16.99, 10);
+INSERT INTO makeup_store VALUES (14, "nails", 27, 16.99, 10);
+INSERT INTO makeup_store VALUES (15, "brushes", 13, 10.99, 6);
+
+---displays the database ordered by price
+SELECT * FROM makeup_store ORDER BY price;
+
+
+---displays the most popular item
+SELECT item, price, rating FROM makeup_store ORDER BY rating desc;
+
+---displays the highest valued item in the store
+SELECT item, MAX(price) FROM makeup_store;
