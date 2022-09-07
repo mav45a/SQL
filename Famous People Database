@@ -1,0 +1,54 @@
+/* Create table about the people and what they do here */
+CREATE table Famous_People (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, occupation TEXT, age INTEGER);
+
+INSERT INTO Famous_People VALUES ( 1, "Brad Pitt", "actor", 58);
+INSERT INTO Famous_People VALUES ( 2, "Billie Eillish", "singer", 20);
+INSERT INTO Famous_People VALUES ( 3, "Zayn Malik", "singer", 29);
+INSERT INTO Famous_People VALUES ( 4, "Johnny Depp", "actor", 59);
+INSERT INTO Famous_People VALUES ( 5, "Mads Mikkelsen", "actor", 56);
+INSERT INTO Famous_People VALUES ( 6, "Rihanna", "singer", 34);
+INSERT INTO Famous_People VALUES ( 7, "Beyonce", "singer", 41);
+INSERT INTO Famous_People VALUES ( 8, "Angelina Jolie", "actor", 47);
+
+CREATE TABLE Movies (id INTEGER PRIMARY KEY AUTOINCREMENT, famous_peopLe_id INTEGER, title TEXT, genre TEXT, Box_office INTEGER, release_year INTEGER);
+
+INSERT INTO Movies VALUES (1, 8, "Maleficent", "Fantasy", "758 million", 2014);
+INSERT INTO Movies VALUES (2, 1, "Mr.& Mrs. Smith", "action", "487 million", 2005);
+INSERT INTO Movies VALUES (3, 8, "Mr.& Mrs. Smith", "action", "487 million", 2005);
+INSERT INTO Movies VALUES (4, 4, "Edward Scissorhands", "fantasy", "86 million", 1990);
+INSERT INTO Movies VALUES (5, 4, "The Rum Diary", "Drama", "30 million", 2011);
+INSERT INTO Movies VALUES (6, 4,"Public Enemies", "Crime", "21 million", 2009);
+INSERT INTO Movies VALUES (7, 7, "Obsessed", "Thriller", "73 million", 2009);
+INSERT INTO Movies VALUES (8, 5, "Chaos Walking", "Sci-fi", "27 million", 2021);
+INSERT INTO Movies VALUES (9, 1, "Fight Club", "Drama", "101 million", 1999);
+INSERT INTO Movies VAlues (10, 6, "Ocean's 8", "Comedy/crime", "297 million", 2018);
+
+CREATE TABLE Songs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, genre TEXT, popular_song TEXT);
+
+INSERT INTO Songs VALUES (1, "Billie Eillish", "pop","lovely");
+INSERT INTO Songs VALUES (2, "Zayn Malik", "pop", "Dusk Till Dawn");
+INSERT INTO Songs VALUES (3, "Rihanna", "pop", "Diamonds");
+INSERT INTO Songs VALUES (4, "Beyonce", "R&B/Soul", "Halo");
+
+SELECT * FROM Songs;
+
+SELECT * FROM Movies;
+
+SELECT * FROM Famous_People;
+
+/*joins famous people and their movie*/
+
+SELECT F.name, M.title
+FROM Famous_People AS F
+INNER JOIN Movies AS M
+ON F.id=M.famous_people_id
+ORDER BY name;
+
+
+/*joins famous people name who have a movie and a popular song*/
+SELECT F.name, M.title, S.popular_song
+FROM Famous_People AS F
+INNER JOIN Movies AS M
+ON F.id= M.famous_people_id
+INNER JOIN Songs AS S
+ON F.name=S.name;
