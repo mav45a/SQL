@@ -51,4 +51,47 @@ SELECT COUNT(cust.acctnum), AVG(quantity*price)
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON Feb.orderid=cust.order_id
-WHERE Feb.quantity>2
+WHERE Feb.quantity>2;
+
+--select date sales of feburary from 02/13/19 00:00 to 02/18/19 00:00--
+
+SELECT orderdate
+FROM BIT_DB.FebSales
+WHERE orderdate between '02/13/19 00:00' AND '02/18/19 00:00';
+
+--what location placed an order on 02/18/19 01:25--
+
+SELECT location
+FROM BIT_DB.FebSales
+WHERE orderdate= '02/18/19 01:35';
+
+
+--what was the total orders placed around 02/18/19%--
+
+SELECT SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE orderdate like '02/18/19%';
+
+
+--select all orderdates in Feburary sales--
+
+SELECT orderdate 
+FROM BIT_DB.FebSales;
+
+--what battery products sold in Feb--
+
+SELECT distinct Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Batteries%';
+
+--list the products and the prices ending in .99--
+
+SELECT distinct Product, Price
+FROM BIT_DB.FebSales
+WHERE Price like '%.99';
+
+--List all the products sold in Los Angeles in February, and include how many of each were sold.--
+SELECT product, sum(quantity)
+FROM BIT_DB.FebSales
+WHERE location like '%Los Angeles%';
+GROUP BY product;
